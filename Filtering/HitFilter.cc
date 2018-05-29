@@ -36,7 +36,7 @@ int HitFilter::findNumberOfHits() {
     bool hit = false;
     int npnt = _data->getChannelCollection().getChannel(ichl)->getWaveform()->GetN();
     for(int ipnt=0; ipnt<npnt && !hit; ipnt++) {
-      double val = _data->getChannelCollection().getChannel(ichl)->getWaveform()->GetY()[ipnt];
+      double val = fabs(_data->getChannelCollection().getChannel(ichl)->getWaveform()->GetY()[ipnt]);
       if( val > (rms*_thresholdMultiplier) ) { 
 	hit = true; 
 	hits++;
@@ -57,7 +57,7 @@ void HitFilter::getNeededMultiplierVector(vector<double> &neededV) {
     int npnt = _data->getChannelCollection().getChannel(ichl)->getWaveform()->GetN();
     double maxmult = 0.0;
     for(int ipnt=0; ipnt<npnt; ipnt++) {
-      double val = _data->getChannelCollection().getChannel(ichl)->getWaveform()->GetY()[ipnt];
+      double val = fabs(_data->getChannelCollection().getChannel(ichl)->getWaveform()->GetY()[ipnt]);
       double mult = val/rms;
       if(maxmult<mult) maxmult = mult;
     }

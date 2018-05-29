@@ -607,4 +607,4 @@ void FileReader::setUseSurfaceAnts(int bit){
   
 }
 
-int FileReader::debug_bit=0;
+int FileReader::debug_bit=1;

@@ -380,9 +380,9 @@ ChannelCollection ChannelCollection::getPolarizedChannelCollection(int polarizat
 ChannelCollection ChannelCollection::getSubset(std::vector<int> channel_ids) const {
  
   std::vector<Channel*> new_vec;
-  
+
   for(int i=0;i<getNumChans(); i++) for(int j=0;j<channel_ids.size(); j++) if(_channels[i]->getChannelId()==channel_ids[j]) new_vec.push_back(_channels[i]);
-  
+
   return ChannelCollection(new_vec);
   
 }
